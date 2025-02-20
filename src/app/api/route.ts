@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 
 export async function POST(req: NextRequest) {
+  console.log("Streaming started");
   if (!OPENROUTER_API_KEY) {
     return NextResponse.json({ error: 'OPENROUTER_API_KEY is not set' }, { status: 500 });
   }
@@ -182,6 +183,7 @@ ${searchResultsWithCitations}`;
                   type: 'content',
                   content: content,
                 });
+                console.log("Sent chunk:", update);
                 controller.enqueue(encoder.encode(`data: ${update}\n\n`));
               }
             } catch (e) {
@@ -193,6 +195,7 @@ ${searchResultsWithCitations}`;
         }
       },
       flush(controller) {
+        console.log("Flushing remaining data");
         // Flush any remaining text in the buffer.
         const remaining = buffer + decoder.decode(); // decoder.decode() without options flushes any buffered data
         if (remaining) {
@@ -207,6 +210,7 @@ ${searchResultsWithCitations}`;
                     type: 'content',
                     content: content,
                   });
+                  console.log("Sent chunk (flush):", update);
                   controller.enqueue(encoder.encode(`data: ${update}\n\n`));
                 }
               } catch (e) {
@@ -241,6 +245,7 @@ ${searchResultsWithCitations}`;
           controller.enqueue(value);
         }
         controller.close();
+        console.log("Streaming ended");
       }
     });
 
