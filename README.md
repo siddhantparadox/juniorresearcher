@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Junior Researcher
+
+**Junior Researcher** is a web application that simplifies research by synthesizing structured research reports using advanced AI APIs. It integrates with the Perplexity Sonar API and Google's Gemini Flash LLM to generate comprehensive reports complete with detailed reasoning and citations.
+
+## Features
+
+- **Structured Research Reports:** Combines search results, citations, and reasoning tokens to deliver detailed, well-organized research reports.
+- **Modern UI:** Built with Next.js and styled with Tailwind CSS, offering a responsive and elegant interface.
+- **Real-Time Streaming:** Provides streaming responses that update as data is processed.
+- **Robust API Integration:** Utilizes the Perplexity Sonar API for research queries and Gemini Flash 2.0 for report synthesis.
+- **Cloud Deployment:** Seamlessly deployed on Vercel for a scalable production environment.
+
+## Live Site
+
+Access the live application at: [https://juniorresearcher.vercel.app/](https://juniorresearcher.vercel.app/)
 
 ## Getting Started
 
-First, run the development server:
+### Local Development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/siddhantparadox/juniorresearcher.git
+   cd juniorresearcher
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Run the Development Server:**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at [http://localhost:3000](http://localhost:3000).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Deployment
 
-## Learn More
+The application is deployed on Vercel. Every push to the main branch triggers an automatic build and deployment.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the [MIT License](LICENSE).
