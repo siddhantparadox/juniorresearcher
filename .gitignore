@@ -35,3 +35,9 @@ build/
 memory_bank/
 .clinerules
 .clineignore
+
+# Documentation files
+gemini2flashdocs.txt
+nextjs15docs.txt
+openrouterdocs.txt
+perplexitydocs.txt
