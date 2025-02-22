@@ -35,6 +35,7 @@ build/
 memory_bank/
 .clinerules
 .clineignore
+newVersion/
 
 # Documentation files
 gemini2flashdocs.txt
