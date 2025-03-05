@@ -30,6 +30,7 @@ export async function POST(req: NextRequest) {
         messages: [{ role: 'user', content: query }],
         response_format: { type: "json_object" },
         include_reasoning: true,
+        max_tokens: 80000, // Add max_tokens to prevent token limit errors
         top_p: 1,
         temperature: 0.2,
         repetition_penalty: 1,
@@ -63,10 +64,21 @@ export async function POST(req: NextRequest) {
 
     const perplexityData = await perplexityResponse.json();
     console.log('Perplexity API Response:', perplexityData);
+    
+    // Check if perplexityData contains an error or if choices array is missing
+    if (perplexityData.error || !perplexityData.choices || !perplexityData.choices.length) {
+      const errorMessage = perplexityData.error?.message || 'Unknown error from Perplexity API';
+      console.error('Perplexity API Error:', errorMessage);
+      return NextResponse.json({ 
+        error: 'Failed to call Perplexity API',
+        details: errorMessage
+      }, { status: 400 });
+    }
+    
     const message = perplexityData.choices[0].message;
     console.log("Full Perplexity message object:", JSON.stringify(message));
-    const searchResults = message.content || "";
-    const reasoning = message.reasoning || "";
+    const searchResults = message?.content || "";
+    const reasoning = message?.reasoning || "";
     const fullOutput = reasoning ? (searchResults + "\n\nReasoning:\n" + reasoning) : searchResults;
 
     // Call Gemini Flash 2.0 API
